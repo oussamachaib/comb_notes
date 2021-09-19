@@ -5,7 +5,7 @@
 \usepackage{wrapfig}
 \usepackage{caption}
 \usepackage{subcaption}
-
+\usepackage{appendix}
 \usepackage{tcolorbox}
 \tcbuselibrary{theorems}
 
@@ -95,7 +95,11 @@ At the initial state (ambient temperature and no external energy input), the mix
 The same can be applied to chemical composition. Mass ($Y_k$) and molar ($X_k$) fractions are used instead:
 \begin{itemize}
     \item Mass fraction: \[Y_k = \frac{m_k}{m} = \frac{\rho_k}{\rho}\]
+    -- For balanced combustion reactions:
+    \[Y_k = \frac{m_k}{m_{tot}} = \frac{\overbrace{n_k}^\textrm{Stoichiometric factor in balanced equation}.\overbrace{M_k}^\textrm{Molar mass of molecule}}{\sum_{k} n_k M_k}\]
     \item Molar fraction: \[X_k = \frac{n_k}{n}\]
+    -- For balanced combustion reactions:
+    \[X_k = \frac{n_k}{n_{tot}} = \frac{\overbrace{n_k}^\textrm{Stoichiometric factor in balanced equation}}{\sum_{k} n_k}\]
     \item \emph{Another very useful equation:}
     \begin{itemize}
         \item Molar mass of the mixture:
@@ -193,7 +197,50 @@ with $C_p$ the heat capacity at constant pressure.
 }
 \\ \\
 \indent 
-\textbf{Heat of reaction ($H_r$)} (J) -- Also referred to as the \textbf{enthalpy of reaction}  
+\textbf{Heat of reaction ($H_r$)} ($J.mol^{-1}$) -- Also referred to as the \textbf{enthalpy of reaction}. It is the change of energy or heat content associated with a reaction at a specified temperature, \underline{where each of the reactants and products is in an appropriate \textbf{standard state}} (def: for each state, a reference state exists -- for gases, it's the ideal gas state at atmospheric pressure). \\
+-- \emph{Important:} The heats of reaction should be at the same temperature.\\
+Heat of reaction is a \textbf{state function}. The total enthalpy of a system cannot be measured directly, we measure the \textbf{enthalpy change} ($\Delta H$) instead.\\
+The heat of reaction can be calculated using three different methods (more details in Appendix A):
+\begin{enumerate}
+    \item \underline{\textbf{Enthalpy of formation ($\Delta H_f$).}}
+    \item \textbf{Bond enthalpies ($\Delta H$, $\Delta H_B$).}
+    \item \textbf{Hess's law:} adding up enthalpies of reactions of different chemical reactions to obtain the enthalpy of reaction of the desired reaction (pretty much like summing a bunch of algebraic equations to cancel out some parameters and only keep the final equation -- valid since it's a state function).
+\end{enumerate}
+For the rest, we will stick to the first definition (\textbf{enthalpy of formation}). In general, it can be calculated using the following equation:
+\[\Delta H = \sum _{i\,prod} n_i[(H^{\circ}_{T_2}-H^{\circ}_{0})-(H^{\circ}_{T_0}-H^{\circ}_{0})+(\Delta H^{\circ}_f)_{T_0}]_i
+- \sum _{j\,react} n_i[(H^{\circ}_{T_1}-H^{\circ}_{0})-(H^{\circ}_{T_0}-H^{\circ}_{0})+(\Delta H^{\circ}_f)_{T_0}]_j\]
+By simplifying (\emph{$T'_0$ can be different for each reactor}):
+\[\Delta H = \sum _{i\,prod} n_i[H^{\circ}_{T_2}-H^{\circ}_{T_0}+(\Delta H^{\circ}_f)_{T_0}]_i
+- \sum _{j\,react} n_i[H^{\circ}_{T_1}-H^{\circ}_{T_0}+(\Delta H^{\circ}_f)_{T_0}]_j\]
+Another definition (Centrale textbook), this time for specific enthalpy:
+\[\underbrace{h_k (T,P)}_\textrm{Specific enthalpy of species 'k'} = \underbrace{\Delta h^0_{f,k}(T_0,P_0)}_\textrm{Standard state/ reference enthalpy}+\underbrace{\int_{T_0}^{T}C_{p,k}(T')dT}_\textrm{Sensible enthalpy}\]
+\[\underbrace{h (T,P)}_\textrm{Total specific enthalpy} = \sum^K_{k=1} h_k(T,P) =\sum^{K}_{k=1}[Y_k\Delta h^0_{f,k}(T_0,P_0)+\int_{T_0}^{T}Y_kC_{p,k}(T')dT']\]
+with $T_0$ standard reference temperature ($298 K$), $T_1$ initial temperature of reactants (sometimes $T_1=T_0$), $T_2$ final temperature of products.
+
+\subsubsection{Adiabatic flame temperature}
+In adiabatic conditions, the enthalpy is conserved in combustion reactions. We can write the following equations to estimate the adiabatic flame temperature $T_2$:
+\[\Delta h = 0\]
+\[h_{reactants} = h_{products}\]
+\[\sum^{K}_{k=1}[Y_k\Delta h^0_{f,k}(T_0,P_0)+\int_{T_0}^{T_1}Y_kC_{p,k}(T')dT']_{reactants} = \sum^{K}_{k=1}[Y_k\Delta h^0_{f,k}(T_0,P_0)+\int_{T_0}^{T_2}Y_kC_{p,k}(T')dT']_{products}\]\\
+\noindent
+\emph{\underline{Quick hacks:}}\\ \\
+-- Standard enthalpy of formation ($\Delta h_f^0$) of $O_2$, $N_2$, $H_2$, solid $C$ is equal to zero.\\
+-- Initial temperature $T_1=T_0=298\,K$: the integral term in the RHS disappears.
+\\
+-- Three simplifications for the \textbf{heat capacity at constant pressure} ($C_p$):
+\begin{enumerate}
+    \item $C_p$ independent of temperature.
+    \item $C_p$ same for all species.
+    \item (1) and (2) combined.
+\end{enumerate}
+\emph{Example:} Case 3 -- $C_p$ independent of temperature and same for all species.\\
+For the following stoichiometric chemical reaction:
+\[CH_4+2(O_2+\beta N_2) \rightarrow CO_2 + 2 H_2O +2\beta N_2\]
+\[T_2 = \frac{Y_{CH_4}.\Delta h_f^0(CH_4)
+- Y_{CO_2}.\Delta h_f^0(CO_2)
+- Y_{H_2O}.\Delta h_f^0(H_2O)}
+{C_p}+T_0
+\]
 
 
 
@@ -203,11 +250,17 @@ with $C_p$ the heat capacity at constant pressure.
 
 
 
-
-
-
-
-\subsubsection{Entropy and disorder}
+\pagebreak
+\section{Spontaneous combustion}
+\pagebreak
+\section{Chemical kinetics}
+\pagebreak
+\section{Premixed flames}
+\pagebreak
+\section{Diffusion flames}
+\pagebreak
+\appendix
+\section{Entropy and disorder}
 \begin{enumerate}
 \item \textbf{Enthalpies of chemical reactions}
 \noindent    
@@ -272,16 +325,5 @@ with $C_p$ the heat capacity at constant pressure.
             \end{enumerate}
         \end{itemize}    
 \end{enumerate}
-
-
-
-\pagebreak
-\section{Spontaneous combustion}
-\pagebreak
-\section{Chemical kinetics}
-\pagebreak
-\section{Premixed flames}
-\pagebreak
-\section{Diffusion flames}
 
 \end{document}
