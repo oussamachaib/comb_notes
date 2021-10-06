@@ -276,9 +276,33 @@ The \textbf{reaction rate} can then be calculated using the constant k. For a si
 \[\nu'_A A + \nu'_B B \rightarrow \nu''_C C + \nu''_D D\]
 the reaction rate of species A is:
 \[\frac{d[A]}{dt} = - k \nu'_A [A]^{\nu'_A} [B]^{\nu'_B}\]
+similary:
+\[\frac{d[C]}{dt} = +k \nu'_C [A]^{\nu'_A} [B]^{\nu'_B}\]
+The order of reaction is defined as:
+\[m=\sum_{i=1}^{N}\nu_i'\]
+The molar reaction rate is defined as:
+\[\dot{\omega}_k = \frac{d[A]_k}{dt}\]
+Other interesting types of reactions (can be found on B. Fiorina's kinetics slides): opposing reactions, competitive reactions, consecutive reactions.
+\pagebreak
+\section{Spontaneous combustion}
+\subsection{Introduction}
+In ambiant temperature, a fuel-oxidizer mixture in a metastable state where reaction speeds are practically null. By increase the temperature gradually, the exothermic slow oxidation reactions are initiated and temperature increases (as long as heat losses to the walls are not important). The slow reactions will therefore be accelerated. We may end up with one of the two following siutations:
+\begin{itemize}
+	\item If $T < T_i$: The reactants are fully consumed and the reaction speed decreases.
+	\item If $T \geq T_i$: The reaction turns into a combustion when the temperature reaches the ignition temperature.
+\end{itemize}
+In the second case ($T \geq T_i$), there is a certain delay before ignition happens (a certain concentration of radicals is necessary to initiate the combustion). This delay is referred to as the \textbf{ignition delay} ($\tau_i$).
 
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=.49\linewidth]{figures/autoinf.png}
+	\caption{Ignition delay illustrated}
+\end{figure}
+\noindent
+Both $T_i$ and $\tau_i$ depend on: equivalence ratio, pressure, the presence of inert dilutants in the mixture, the presence of additives favoring or limiting chain reactions, wall temperatures, and the dimensions of the system containing the mixture.
 
-\subsection{Spontaneous combustion}
+\subsection{Semenov's theory}
+
 \pagebreak
 \section{Premixed flames}
 \pagebreak
