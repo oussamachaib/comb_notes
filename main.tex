@@ -186,7 +186,7 @@ There exists a quantity S, called the entropy, which has the property that for a
 \[dH = \delta Q\]
 -- For a \textbf{closed} system, reversible process, and neglecting pressure variations: (\underline{\emph{Not}} valid for combustion // irreversible)
 \[dH = TdS+pdV\]
-for ideal gases:
+-- For a \textbf{closed} system, adiabatic, involving ideal gases, and neglecting pressure variations:
 \[dH = C_p dT\]
 with $C_p$ the heat capacity at constant pressure.
 }
@@ -299,12 +299,54 @@ In the second case ($T \geq T_i$), there is a certain delay before ignition happ
 	\caption{Ignition delay illustrated}
 \end{figure}
 \noindent
-Both $T_i$ and $\tau_i$ depend on: equivalence ratio, pressure, the presence of inert dilutants in the mixture, the presence of additives favoring or limiting chain reactions, wall temperatures, and the dimensions of the system containing the mixture.
+Both $T_i$ and $\tau_i$ depend on: equivalence ratio, pressure, the presence of inert dilutants in the mixture, the presence of additives favoring or limiting chain reactions, wall temperatures, and the dimensions of the system containing the mixture.\\
 
 \subsection{Semenov's theory}
-
+To be continued later on, not sure if it's the most interesting part to cover for the moment.
 \pagebreak
 \section{Premixed flames}
+\subsection{Introduction}
+Premixed flames are often encountered in many applications. The simplest one is perhaps the bunsen burner (laminar flame). Premixed flames are also used in more complex systems, particularly Otto engines and gas turbines (turbulent regime). Premixed flames can be divided to two main regions:
+\begin{enumerate}
+	\item \textbf{Preheating region:} Where the main phenomena are species transport (mass transfer) and heat transfer.
+	\item \textbf{Reaction zone:} Where all essential chemical reactions happen. They can usually be described using a simple reaction model (one-step). By following a streamline, the evolution of temperature can be described as in the figures below.
+\end{enumerate}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=.49\linewidth]{figures/prmx.png}
+	\caption{Temperature profile and combustion wave propagation in a premixed system}
+\end{figure}
+A similar phenomenon to combustion in a bunsen burner can be observed if we use a tube containing a reactive mixture where extremities are both initially covered. If the extremities of the tube are instantly uncovered and the mixture is ignited on one of them, a flame front will appear and propagate towards the other side at a velocity of around $5\,m.s^{-1}$. This flame front has the same properties as the reaction zone in a bunser burner (and can be treated like such, like a planar wave). We are in this case in presence of a subsonic combustion wave (\textbf{deflagration}). If the same experiment is repeated with one of the extremities covered, the flame front will propagate at a much higher speed (a few $km.s^{-1}$). We are in this case in presence of a supersonice combustion wave (\textbf{detonation}).
+\subsection{Combustion wave equation}
+Here, we detail the conservation equations on each side of the combustion wave:\\
+\begin{itemize}
+	\item Continuity equation:
+	\[\dot{m}=\rho_1 u_1=\rho_2 u_2\]
+	\item Momentum conservation:
+	\[p_1 + \rho_1 u_1^2 = p_2 + \rho_2 u_2^2 \]
+	\item Energy conservation:
+	\[   	h_1 + \frac{u_1^2}{2} =  h_2 + \frac{u_2^2}{2} \]
+	\[   	C_pT_1 + \frac{u_1^2}{2} + \Delta h_0=  C_pT_2 + \frac{u_2^2}{2} \]
+	with: $\Delta h_0 = h_1^0 - h_2^0$ (where $h^0$ is the standard enthalpy of formation).
+	\item State equations (ideal gas):
+	\[p_1 =  \rho_1 R T_1  \]
+	\[p_2 =  \rho_2 R T_2  \]
+\end{itemize}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 \pagebreak
 \section{Diffusion flames}
 \pagebreak
