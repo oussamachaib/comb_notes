@@ -286,7 +286,7 @@ Other interesting types of reactions (can be found on B. Fiorina's kinetics slid
 \pagebreak
 \section{Spontaneous combustion}
 \subsection{Introduction}
-In ambiant temperature, a fuel-oxidizer mixture in a metastable state where reaction speeds are practically null. By increase the temperature gradually, the exothermic slow oxidation reactions are initiated and temperature increases (as long as heat losses to the walls are not important). The slow reactions will therefore be accelerated. We may end up with one of the two following siutations:
+In ambiant temperature, a fuel-oxidizer mixture is in a metastable state where reaction speeds are practically null. By increasing the temperature gradually, the exothermic slow oxidation reactions are initiated and temperature increases (as long as heat losses to the walls are not important). The slow reactions will therefore be accelerated. We may end up with one of the two following siutations:
 \begin{itemize}
 	\item If $T < T_i$: The reactants are fully consumed and the reaction speed decreases.
 	\item If $T \geq T_i$: The reaction turns into a combustion when the temperature reaches the ignition temperature.
@@ -316,12 +316,12 @@ Premixed flames are often encountered in many applications. The simplest one is 
 	\includegraphics[width=.49\linewidth]{figures/prmx.png}
 	\caption{Temperature profile and combustion wave propagation in a premixed system}
 \end{figure}
-A similar phenomenon to combustion in a bunsen burner can be observed if we use a tube containing a reactive mixture where extremities are both initially covered. If the extremities of the tube are instantly uncovered and the mixture is ignited on one of them, a flame front will appear and propagate towards the other side at a velocity of around $5\,m.s^{-1}$. This flame front has the same properties as the reaction zone in a bunser burner (and can be treated like such, like a planar wave). We are in this case in presence of a subsonic combustion wave (\textbf{deflagration}). If the same experiment is repeated with one of the extremities covered, the flame front will propagate at a much higher speed (a few $km.s^{-1}$). We are in this case in presence of a supersonice combustion wave (\textbf{detonation}).
+A similar phenomenon to combustion in a bunsen burner can be observed if we use a tube containing a reactive mixture where both extremities are initially covered. If the latter are instantly uncovered and the mixture is ignited in one of them, a flame front will appear and propagate towards the other side at a velocity of around $5\,m.s^{-1}$. This flame front has the same properties of the reaction zone of a bunser burner flame (and can be treated like such, like a \textbf{planar wave}). We are in this case in presence of a subsonic combustion wave (\textbf{deflagration}). If the same experiment is repeated while the other extremity is this time covered, the flame front will propagate at a much higher speed (a few $km.s^{-1}$). We are in this case in presence of a supersonic combustion wave (\textbf{detonation}).
 \subsection{Combustion wave equation}
-Here, we detail the conservation equations on each side of the combustion wave:\\
+Here, we detail the conservation equations on each side of the combustion wave (with 1: fresh gases, and 2: burnt gases):\\
 \begin{itemize}
 	\item Continuity equation:
-	\[\dot{m}=\rho_1 u_1=\rho_2 u_2\]
+	\[\frac{\dot{m}}{A}=\rho_1 u_1=\rho_2 u_2\]
 	\item Momentum conservation:
 	\[p_1 + \rho_1 u_1^2 = p_2 + \rho_2 u_2^2 \]
 	\item Energy conservation:
@@ -329,12 +329,69 @@ Here, we detail the conservation equations on each side of the combustion wave:\
 	\[   	C_pT_1 + \frac{u_1^2}{2} + \Delta h_0=  C_pT_2 + \frac{u_2^2}{2} \]
 	with: $\Delta h_0 = h_1^0 - h_2^0$ (where $h^0$ is the standard enthalpy of formation).
 	\item State equations (ideal gas):
-	\[p_1 =  \rho_1 R T_1  \]
-	\[p_2 =  \rho_2 R T_2  \]
+	\[p_1 =  \rho_1 r T_1  \]
+	\[p_2 =  \rho_2 r T_2  \]
 \end{itemize}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=.8\linewidth]{figures/planarwave.png}
+\end{figure}
+By combining mass continuity and momentum equations, we define the \textbf{Rayleigh line} such that:
+\begin{center}
+	\fbox{$p = -(\frac{\dot{m}}{A})^2 \,\frac{1}{\rho} + cst$}
+\end{center}
+Using the previous result and the energy conservation equation, we define $p_2$ as:
+\begin{center}
+	\fbox{$p_2 = \frac{\Delta h^0 +\frac{\gamma+1}{2(\gamma -1)}- \frac{p_1}{2} \frac{1}{\rho_2}}{-\frac{1}{2 \rho_1}+\frac{\gamma+1}{2(\gamma -1)} \frac{1}{\rho_2}}      $}
+\end{center}
+\textit{Reminder:} $M = u/c$ and $c=\sqrt{\gamma r T}$\\
+The function $p=f(\frac{1}{\rho})$ is therefore a hyperbola (Hugoniot's curve or Hugoniot's hyperbola). In absence of chemical reactions, the specific reference enthalpy is null ($\Delta h^0 = 0$) and the curve crosses the point of coordinates ($p_1$,$1/\rho_1$). This function separates three different regions which correspond to all possible solutions (intersection of Rayleigh's line with Hugoniot's curve).
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=.49\linewidth]{figures/clapeyron.png}
+	\caption{Clapeyron's diagram}
+\end{figure}
+\begin{itemize}
+	\item \textbf{Detonation regime:} When $p_2>>p_1$ and $M_1>1$. The combustion wave is supersonic. The velocity of at which fresh gases approach the planar combustion wave from its point of view is higher than that of burnt gases $u_1>u_2$.
+	\item \textbf{Deflagration regime:} When $p_2 \approx p_1$ and $M_1<1$. The combustion wave is subsonic. It's the case for flames encountered in Bunsen burners. The intersection of Rayleigh's line and Hugoniot's curve in this case corresponds to $M=1$ which reduces the range of possible solutions to $p=f(1/\rho)$ with $1/\rho < 1/\rho_{M=1}$. In order to fully solve the problem, an additional equation is necessary (flame thickness $\delta_l$).
+	\item There is no solution for the equation when $p>p_1$ and $1/\rho > 1/\rho_1$.
+\end{itemize}
+\subsection{Laminar flame speed}
+There are many definitions of the laminar flame speed and most definitions have changed or evolved along the years. Historically, two major approaches have been suggested to calculate the laminar flame speed:
+\begin{itemize}
+		\item \textbf{Thermal approach:} (Mallard, Le Châtelier 1885) Related to transport phenomena (mostly heat transfer). This approach defines the laminar flame speed as:
+		\begin{center}
+			\fbox{$S_l = \sqrt{D_T \bar{\dot{\omega}}}$}
+		\end{center}
+	where $\bar{\dot{\omega}}$ is the average reaction rate.
+		\item \textbf{Diffusion approach:} (Zeldovich, Frank-Kamenetskii, Semenov 1938) Relies on mass transfer or diffusion of species and free radicals. This approach defines the laminar flame speed as:
+		\begin{center}
+			\fbox{$S_l = C \sqrt{\frac{\lambda}{\rho_1^2C_p (Y_{F_1}-Y_{F_2})} \bar{\dot{\omega}}}$}
+		where C is a constant and $\lambda$ the thermal conductivity.
+		\end{center}
+		\item Current approaches rely on numerical simulation to combine both the thermal approach and molecular diffusion.
+\end{itemize}
+Both approaches make use of simplifications and assumptions to estimate the laminar flame speed, more detail on the combustion textbook (poly Centrale).
 
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=.49\linewidth]{figures/thermal.png}
+	\includegraphics[width=.49\linewidth]{figures/diffu.png}
+	\caption{Thermal approach (left) and diffusive approach (right) in calculating the laminar flame speed}
+\end{figure}
 
-
+\subsubsection{Some important dimensionless numbers}
+We define hereby the following dimensionless numbers:
+\begin{itemize}
+	\item \textbf{Prandtl's number:} (with $D_T$: thermal diffusivity).
+	\[Pr = \frac{\nu}{D_T}=\frac{momentum \, transport}{thermal \, transport}\]
+	\item \textbf{Schmidt's number:} 
+	\[Sc=\frac{\nu}{D_J}=\frac{momentum \, transport}{species \, or \, mass \, transport}\]
+	\item \textbf{Lewis' number:} Thermo-diffusive effects.
+	\[Le=\frac{D_T}{D_J} = \frac{Sc}{Pr} = \frac{diffusive \, mass \, transfer}{heat \, transfer}\]
+	\item \textbf{Progress variable:} (with c=0 in unburnt gases and c=1 in burnt gases)
+	\[c = \frac{T-T_1}{T_2 - T_1} = \frac{Y_F - Y_{F_1}}{Y_{F_2}-Y_{F_1}}\]
+\end{itemize}
 
 
 
