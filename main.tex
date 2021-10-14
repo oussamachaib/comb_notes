@@ -15,8 +15,8 @@
 \title{% 
 Combustion \\
 \vspace{10pt}
-\small Summarized from B. Fiorina lectures, Centrale Textbook \\
-Glassman $5^{th}$, MIT Courseware}
+\small Summarized from B. Fiorina, D. Veynante, R. Vicquelin lectures, and\\
+Veynante \& Poinsot's Theoretical \& Numerical Combustion}
 \author{\small Oussama Chaib}
 \date{\small August 2021}
 
@@ -392,21 +392,75 @@ We define hereby the following dimensionless numbers:
 	\item \textbf{Progress variable:} (with c=0 in unburnt gases and c=1 in burnt gases)
 	\[c = \frac{T-T_1}{T_2 - T_1} = \frac{Y_F - Y_{F_1}}{Y_{F_2}-Y_{F_1}}\]
 \end{itemize}
-
-
-
-
-
-
-
-
-
-
-
-
 \pagebreak
+\section{Premixed turbulent combustion}
+\textit{From Veynante's \& Poinsot's books and lectures}\vspace{5pt}\\
+	Turbulence is characterized by the RMS turbulent velocity $u'$ and its integral length scale $l_t$. Derivations of turbulent combustion models also use a second assumption: turbulence is isotropic and homogeneous. The local dissipation rate of turbulent kinetic energy $\epsilon$:
+	\[\epsilon = \frac{u'(r)^3}{r}\]
+	We can then define the \textbf{turbulent time scale}: 
+	\[\tau_m(r) = \frac{r}{u'(r)} = \frac{r^{2/3}}{\epsilon^{1/3}}\] 
+	and the \textbf{chemical time scale} (or flame, combustion, diffusion time scale):
+	\[\tau_c = \frac{\delta}{s^0_L} = \frac{flame\,thickness}{flame\,speed} \]
+	We can combine both into the \textbf{Damköhler number}:
+	\[Da(r) = \frac{\tau_m(r)}{\tau_c}= \frac{turbulent\,time\,scale}{chemical\,time\,scale}\]
+	\begin{itemize}
+		\item $Da>>1$ ($\tau_c<<\tau_t$): Turbulence effect on inner flame structure is limited/ not significant.
+		\item $Da<<1$ ($\tau_c>>\tau_t$): Flame strongly modified by turbulent eddies.
+	\end{itemize}
+But in reality, $Da(r)$ depends on r with $\eta_k < r < l_t$ (with $\eta_k$: Kolmogorov length scale, and $l_t$: Integral length scale). So, instead, we define the following dimensionless number:
+\begin{itemize}
+	\item \textbf{Damköhler number} (Da): Defined for the largest scales $l_t$:
+	\[Da = \frac{\tau_m(l_t)}{\tau_c}=\frac{\tau_t}{\tau_c} = \frac{\frac{l_t}{u_t}}{\frac{\delta}{s^0_L}}\]
+	\item \textbf{Karlovitz number} (Ka): Inverse of Da \underline{but} only for the smallest Kolmogorov scales:
+	\[Ka = \frac{1}{Da(\eta_k)} = \frac{\tau_c}{\tau_k} = \frac{\frac{\delta}{s^0_L}}{\frac{\eta_k}{u'(\eta_k)}}  \]
+	\textit{(Other forms of this equation available on p. 208 of V \& P's book)}
+\end{itemize}
+In Kolmogorov's cascade, kinetic energy is transferred from the larger scales to the smaller scales. The dissipation rate of kinetic energy remains constant:
+\[\ \epsilon \approx \frac{u_t^3}{l_t} \approx \frac{u_k^3}{l\eta_k} \approx \nu(\frac{u_k}{\eta_k})^2\]
+This yields the following interesting equation:
+\[ Re_t = \frac{u_t l_t}{\nu} \]
+\[ Re_t^{1/2} = Da.Ka \]
+
+\begin{figure}[ht!]
+	\centering
+	\includegraphics[width=.96\linewidth]{figures/cascade.png}
+	\vspace{10pt}\\
+	\includegraphics[width=.96\linewidth]{figures/relations.png}
+	\caption{(a) Kolmogorov cascade and the three energy transfer mechanisms (b) Some basic equations relating the different scales (Turbulence\_E2\_01 Ronan)}
+\end{figure}
+
+Using the quantities introduced previously, we can define a turbulent combustion diagram comprised of different zones:
+\begin{enumerate}
+	\item \textbf{Flamelet regime} or \textbf{thin flame regime} ($Da>1$ and $Ka<1$): In this region, the chemical time scale is shorter than any turbulent time scale, even the Kolmogorov scale.\\
+	\underline{\textit{Features --}} Thin reaction zone, flame thickness smaller than any turbulent scale, the flame has an inner structure similar to that of a laminar flame and is wrinkled by turbulent motion.
+	\begin{enumerate}
+		\item \textbf{Wrinkled flamelets} ($u'<s^0_L$): the speed of turbulent motion is too low to wrinkle the flame front to the extent of causing flame interactions. 
+		\item \textbf{Corrugated flamelets} ($u'<s^0_L$): the speed of turbulent motion is enough to wrinkle the flame front to the extent of causing flame interactions leading to the formation of pockets of burnt and unburnt gases.
+	\end{enumerate}
+	\item \textbf{Thickened-wrinkled flame} ($1<Ka<100$): In this region, turbulent structures increase the thickness of the preheating zone but do not penetrate the reaction zone which remains thin and \emph{close} to a laminar flame.
+	\item \textbf{Thickened flame} ($Ka>100$): In this region, the mixing is fast and the overall reaction rate is mainly limited by chemistry. Both the preheating and reaction zones are perturbated by turbulence and \emph{no laminar flame structure can be indentified}.
+\end{enumerate}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=.8\linewidth]{figures/diagram.png}
+	\caption{Premixed turbulent combustion regimes}
+\end{figure}
+
+
+
+
+
 \section{Diffusion flames}
 \pagebreak
+
+
+
+
+
+
+
+
+
 
 
 \appendix
