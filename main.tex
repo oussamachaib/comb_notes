@@ -12,6 +12,18 @@
 \newtcbtheorem[number within=section]{theo}{}%
 {colback=green!5,colframe=green!35!black,fonttitle=\bfseries}{th}
 
+\usepackage{hyperref}
+\definecolor{navyblue}{rgb}{0.0, 0.0, 0.5}
+\definecolor{myblue}{RGB}{15,77,145}
+\definecolor{mountainmeadow}{rgb}{0.19, 0.73, 0.56}
+\hypersetup{
+	colorlinks=true,
+	linkcolor=myblue,
+	citecolor=mountainmeadow,
+	urlcolor=navyblue,
+}
+
+
 \title{% 
 Combustion \\
 \vspace{10pt}
@@ -394,6 +406,7 @@ We define hereby the following dimensionless numbers:
 \end{itemize}
 \pagebreak
 \section{Premixed turbulent combustion}
+\subsection{Damköhler and Karlovitz numbers}
 \textit{From Veynante's \& Poinsot's books and lectures}\vspace{5pt}\\
 	Turbulence is characterized by the RMS turbulent velocity $u'$ and its integral length scale $l_t$. Derivations of turbulent combustion models also use a second assumption: turbulence is isotropic and homogeneous. The local dissipation rate of turbulent kinetic energy $\epsilon$:
 	\[\epsilon = \frac{u'(r)^3}{r}\]
@@ -420,15 +433,16 @@ In Kolmogorov's cascade, kinetic energy is transferred from the larger scales to
 This yields the following interesting equation:
 \[ Re_t = \frac{u_t l_t}{\nu} \]
 \[ Re_t^{1/2} = Da.Ka \]
-
-\begin{figure}[ht!]
+\pagebreak
+\begin{figure}[h!]
 	\centering
-	\includegraphics[width=.96\linewidth]{figures/cascade.png}
+	\includegraphics[width=.8\linewidth]{figures/cascade.png}
 	\vspace{10pt}\\
-	\includegraphics[width=.96\linewidth]{figures/relations.png}
+	\includegraphics[width=.8\linewidth]{figures/relations.png}
 	\caption{(a) Kolmogorov cascade and the three energy transfer mechanisms (b) Some basic equations relating the different scales (Turbulence\_E2\_01 Ronan)}
 \end{figure}
-
+\pagebreak
+\subsection{Turbulent flame regimes}
 Using the quantities introduced previously, we can define a turbulent combustion diagram comprised of different zones:
 \begin{enumerate}
 	\item \textbf{Flamelet regime} or \textbf{thin flame regime} ($Da>1$ and $Ka<1$): In this region, the chemical time scale is shorter than any turbulent time scale, even the Kolmogorov scale.\\
