@@ -1,0 +1,59 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{fullpage}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{appendix}
+\usepackage{tcolorbox}
+\tcbuselibrary{theorems}
+
+\newtcbtheorem[number within=section]{theo}{}%
+{colback=green!5,colframe=green!35!black,fonttitle=\bfseries}{th}
+
+\usepackage{hyperref}
+\definecolor{navyblue}{rgb}{0.0, 0.0, 0.5}
+\definecolor{myblue}{RGB}{15,77,145}
+\definecolor{mountainmeadow}{rgb}{0.19, 0.73, 0.56}
+\hypersetup{
+	colorlinks=true,
+	linkcolor=myblue,
+	citecolor=mountainmeadow,
+	urlcolor=navyblue,
+}
+
+\title{% 
+	Cribsheet \\
+	\vspace{10pt}
+	\small Michaelmas 2021}
+\author{\small Oussama Chaib}
+\date{\small October 2021}
+
+\begin{document}
+	\maketitle
+%	\tableofcontents
+%	\pagebreak
+\section{Transport equations}
+\subsection{Mass transfer}
+\begin{itemize}
+	\item \textbf{Mass (or species) transport equation}
+		\[
+	\frac{\partial}{\partial t}(\rho Y_k)+\mathbf{\nabla} . \mathbf{\mathcal{J}_k} = \dot{w}_k
+	\]
+	\begin{center}
+			\fbox{$\underbrace{\frac{\partial}{\partial t}(\rho Y_k)}_{non-stationary} +\underbrace{\mathbf{\nabla}.(\rho Y_k \mathbf{v})}_{convection} = \underbrace{-\mathbf{\nabla} . \mathbf{J_k}}_{diffusion}+\underbrace{\dot{w}_k}_{production}$}
+	\end{center}
+
+
+where $\rho$ is the density of the fluid, $Y_k$ is the mass fraction of species $k$ in the fluid, $\mathbf{v}$ the velocity vector of the fluid, $\mathbf{\mathcal{J}_k}$ the mass flux vector of species k,  $\mathbf{J_k}$ the \underline{diffusive} mass flux vector of species k, $\dot{w}_k$ the production rate of species $k$.
+\item \textbf{Fick's law:} (mass diffusion)
+\[
+\mathbf{J_k} = -D_k \nabla C_k = - \rho D_k \nabla Y_k
+\]
+We can then further develop the previous equation by introducing Fick's law and Einstein convention:
+\[
+\rho(\frac{\partial Y_k}{\partial t}+\frac{\partial Y_k v_j}{\partial x_j}) = \rho D_k \frac{\partial^2 Y_k}{\partial x_j \partial x_j} + \dot{w}_k
+\]
+\end{itemize}
+\end{document}
